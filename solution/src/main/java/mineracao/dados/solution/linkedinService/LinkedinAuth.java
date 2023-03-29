@@ -10,19 +10,30 @@ public class LinkedinAuth {
 
 
 
-    public void loginAuthLinkedin(WebDriver driver) {
+    public void loginAuthLinkedin(WebDriver driver)  {
 
-        WebElement loginArea = driver.findElement(By.tagName("a"));
-        loginArea.click();
+        try {
 
-        WebElement loginForm = driver.findElement(By.id("username"));
-        loginForm.sendKeys("jhonatas2004@gmail.com");
 
-        WebElement passForm = driver.findElement(By.id("password"));
-        passForm.sendKeys("26042004JHON");
+            WebElement loginArea = driver.findElement(By.className("main__sign-in-link"));
+            Thread.sleep(2000);
 
-        WebElement buttonSend = driver.findElement(By.id("join-form-submit"));
-        buttonSend.click();
+            loginArea.click();
 
+            WebElement loginForm = driver.findElement(By.id("username"));
+            loginForm.sendKeys("jhonatas2004@gmail.com");
+
+
+
+            WebElement passForm = driver.findElement(By.id("password"));
+            passForm.sendKeys("26042004JHON");
+
+
+            WebElement buttonSend = driver.findElement(By.tagName("button"));
+            buttonSend.click();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
