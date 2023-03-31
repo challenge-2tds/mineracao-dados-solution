@@ -7,6 +7,8 @@ import lombok.Setter;
 @Setter
 public class User {
 
+    private Long id;
+
     private String name;
 
     private String bio;
@@ -14,5 +16,13 @@ public class User {
     private String linkProfile;
 
     private String city;
+
+    private String phone;
+
+    private String localidade;
+
+    private String mail;
+
+
 
 }

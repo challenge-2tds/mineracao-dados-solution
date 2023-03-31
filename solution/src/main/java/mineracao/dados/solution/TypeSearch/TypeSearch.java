@@ -4,7 +4,9 @@ public enum TypeSearch {
 
     INSTAGRAM("instagram"),
     FACEBOOK("facebook"),
-    LINKEDIN("linkedin");
+    LINKEDIN("linkedin"),
+    MAPSGOOGLE("mapsGoogle");
+
 
     TypeSearch(String i) {
 

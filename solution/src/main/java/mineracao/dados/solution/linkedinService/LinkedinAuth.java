@@ -21,12 +21,12 @@ public class LinkedinAuth {
             loginArea.click();
 
             WebElement loginForm = driver.findElement(By.id("username"));
-            loginForm.sendKeys("jhonatas2004@gmail.com");
+            loginForm.sendKeys("brenojulio87@gmail.com"); //jhonatas2004@gmail.com
 
 
 
             WebElement passForm = driver.findElement(By.id("password"));
-            passForm.sendKeys("26042004JHON");
+            passForm.sendKeys("Br07022003#"); //26042004JHON
 
 
             WebElement buttonSend = driver.findElement(By.tagName("button"));
