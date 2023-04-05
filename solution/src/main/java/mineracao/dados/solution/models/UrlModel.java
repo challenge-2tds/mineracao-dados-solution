@@ -20,7 +20,11 @@ public class UrlModel {
     private String url;
 
     @NonNull
+    private String keys;
+
+    @NonNull
     private TypeSearch typeSearch;
+
 
 
 
