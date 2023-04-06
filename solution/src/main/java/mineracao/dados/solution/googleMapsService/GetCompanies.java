@@ -11,27 +11,51 @@ public class GetCompanies {
 
     public void getAllCompaniesByKey(WebDriver driver) {
 
-        WebElement containerCard = driver.findElement(By.xpath("/html/body/div[3]/div[9]/div[9]/div/div/div[1]/div[2]/div/div[1]/div/div/div[2]/div[1]"));
 
 
-        List<WebElement> cardsEmpresa = containerCard.findElements(By.xpath("//div[@class='Nv2PK THOPZb CpccDe ']"));
+
+        List<WebElement> cardsEmpresa = driver.findElements(By.xpath("//a[@class='hfpxzc']"));
 
         for (WebElement cardEmpresa : cardsEmpresa) {
 
             cardEmpresa.click();
 
+            try {
 
-            String nome = driver.findElement(By.xpath("//h1[@class='DUwDvf fontHeadlineLarge']")).getText();
 
-//            String avaliacoes = driver.findElement(By.xpath("/html/body/div[3]/div[9]/div[9]/div/div/div[1]/div[2]/div/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[1]/div[2]/span[2]/span/span")).getText();
+                Thread.sleep(2000);
 
-            String estrelas = driver.findElement(By.xpath("//span[@class='ceNzKf']")).getAttribute("aria-label");
 
-            String endereco =  driver.findElement(By.xpath("/html/body/div[3]/div[9]/div[9]/div/div/div[1]/div[3]/div/div[1]/div/div/div[2]/div[9]/div[3]/button/div[1]/div[3]/div[1]")).getText();
+                String nome = driver.findElement(By.xpath("//div[@class='lMbq3e']/div/h1")).getText();
 
-            String telefone = driver.findElement(By.xpath("/html/body/div[3]/div[9]/div[9]/div/div/div[1]/div[3]/div/div[1]/div/div/div[2]/div[9]/div[6]/button/div[1]/div[3]/div[1]")).getText();
+                String avaliacoes = driver.findElement(By.xpath("//div[@class='F7nice ']/span[2]/span/span")).getText();
 
-            String pluscode = driver.findElement(By.xpath("/html/body/div[3]/div[9]/div[9]/div/div/div[1]/div[3]/div/div[1]/div/div/div[2]/div[9]/div[7]/button/div[1]/div[3]/div[1]")).getText();
+                String estrelas = driver.findElement(By.xpath("//span[@class='ceNzKf']")).getAttribute("aria-label");
+
+                String endereco =  driver.findElement(By.xpath("//button[@data-item-id='address']/div/div[3]/div")).getText();
+
+                String pluscode = driver.findElement(By.xpath("//button[@data-tooltip='Copiar Plus Code']/div/div[3]/div")).getText();
+
+                try {
+                    String telefone = driver.findElement(By.xpath("//button[@data-tooltip='Copiar número de telefone']/div/div[3]/div")).getText();
+
+                    System.out.println("Nome empresa: " + nome + "\nNº Avaliações: " + avaliacoes + "\nEstrelas: " + estrelas + "\nendereco: " + endereco + "\nTelefone: " + telefone + "\nPlusCode: " + pluscode);
+                    System.out.println("==============================================================================================================================================");
+
+                }catch (Exception e) {
+
+                    System.out.println("Nome empresa: " + nome + "\nNº Avaliações: " + avaliacoes + "\nEstrelas: " + estrelas + "\nendereco: " + endereco  + "\nPlusCode: " + pluscode);
+                    System.out.println("==============================================================================================================================================");
+
+
+                }
+
+            } catch (Exception e) {
+
+            }
+
+
+
 
         }
 

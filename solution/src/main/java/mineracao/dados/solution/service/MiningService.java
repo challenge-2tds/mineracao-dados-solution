@@ -62,7 +62,7 @@ public class MiningService {
 
                 linkUsers = linkedinUrlUsers.LinkedinUrl(driver, urlPeople);
 
-                linkedinUrlUsers.linkedinExtractUserData( driver, linkUsers );
+                linkedinUrlUsers.linkedinExtractUserData(driver, linkUsers);
 
 
             case MAPSGOOGLE:
@@ -74,74 +74,6 @@ public class MiningService {
                 mapsUrlCompanies.getCompaniesUrl(driver, url);
 
                 getCompanies.getAllCompaniesByKey(driver);
-
-
-
-
-
-//                    MapsUrlCompanies mapsUrlCompanies = new MapsUrlCompanies();
-//
-//                    mapsUrlCompanies.getCompaniesUrl(driver, url);
-//
-//
-//
-//
-//
-//
-//                    WebElement containerCard = driver.findElement(By.xpath("//div[@class='m6QErb DxyBCb kA9KIf dS8AEf ecceSd']"));
-//
-//
-//                    List<WebElement> cardEmpresa = containerCard.findElements(By.xpath("//div[@class='Nv2PK THOPZb CpccDe ']"));
-//
-//                    List<WebElement> linkEmpresas = containerCard.findElements(By.xpath("//a[@class='hfpxzc']"));
-//
-//                    int i = 0;
-//
-//                    ArrayList<String> linksEmpresas = new ArrayList<>();
-//
-//                    for (WebElement empresaLink : linkEmpresas) {
-//
-//                        String linkEmpresa = empresaLink.getAttribute("href");
-//                        System.out.println(linkEmpresa);
-//                        linksEmpresas.add(linkEmpresa);
-//
-//
-//                    }
-//                    for (String link : linksEmpresas) {
-//                        driver.get(link);
-//
-//                        try {
-//
-//                            String nome = driver.findElement(By.xpath("//h1[@class='DUwDvf fontHeadlineLarge']")).getText();
-//
-//                            String avaliacoes = driver.findElement(By.xpath("/html/body/div[3]/div[9]/div[9]/div/div/div[1]/div[2]/div/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[1]/div[2]/span[2]/span/span")).getText();
-//
-//                            String estrelas = driver.findElement(By.xpath("//span[@class='ceNzKf']")).getAttribute("aria-label");
-//
-//                            List<WebElement> dadosCard = driver.findElements(By.xpath("//div[@class='rogA2c']/div[1]"));
-//
-//
-//                            List<WebElement> horarioFuncionamento = driver.findElements(By.xpath("//tr[@class='y0skZc']"));
-//
-//
-//                            String endereco = dadosCard.get(0).getText();
-//
-//                            String telefone = dadosCard.get(3).getText();
-//
-//                            String pluscode = dadosCard.get(4).getText();
-//
-//
-//                            System.out.println("link empresa: " + link + "\nNome: " + nome + "\nestrelas: " + estrelas + "\nendereco: " + endereco + "\ntelefone: " + telefone + "\npluscode: " + pluscode);
-//                            System.out.println("==================================================================================================================================================");
-//
-//
-//                        } catch (Exception e) {
-//                            System.out.println("==================================================================================================================================================");
-//                        }
-//
-//
-//                    }
-
 
 
             case INSTAGRAM: // Minerar dados com base nos seguidores de usuario
