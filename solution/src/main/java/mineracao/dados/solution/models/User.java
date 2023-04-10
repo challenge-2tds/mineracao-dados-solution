@@ -8,21 +8,13 @@ import lombok.Setter;
 public class User {
 
     private Long id;
-
-    private String name;
-
-    private String bio;
-
-    private String linkProfile;
-
-    private String city;
-
-    private String phone;
-
-    private String localidade;
-
-    private String mail;
-
-
+    private String linkProfile; //LINKEDIN
+    private String mail; //LINKEDIN
+    private String avaliacoes; //MAPS
+    private String estrelas; //MAPS
+    private String plusCode;//MAPS
+    private String name; // LINKEDIN, MAPS
+    private String phone; //LINKEDIN, MAPS
+    private String localidade; //LINKEDIN, MAPS
 
 }

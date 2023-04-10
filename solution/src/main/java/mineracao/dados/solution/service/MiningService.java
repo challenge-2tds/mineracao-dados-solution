@@ -3,15 +3,15 @@ package mineracao.dados.solution.service;
 
 import mineracao.dados.solution.googleMapsService.GetCompanies;
 import mineracao.dados.solution.googleMapsService.MapsUrlCompanies;
+import mineracao.dados.solution.googleMapsService.googleMapsInterface.GoogleMapsCompaniesService;
 import mineracao.dados.solution.linkedinService.LinkedinAuth;
 import mineracao.dados.solution.linkedinService.LinkedinGetUrl;
 import mineracao.dados.solution.linkedinService.LinkedinUrlUsers;
+import mineracao.dados.solution.linkedinService.linkedinInterface.LinkedinUsersService;
 import mineracao.dados.solution.models.UrlModel;
-import mineracao.dados.solution.models.User;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +51,7 @@ public class MiningService {
             case LINKEDIN:
 
                 LinkedinAuth linkedinAuth = new LinkedinAuth();
-                LinkedinUrlUsers linkedinUrlUsers = new LinkedinUrlUsers();
+                LinkedinUsersService linkedinUsersService = new LinkedinUrlUsers();
                 LinkedinGetUrl linkedinGetUrl = new LinkedinGetUrl();
 
                 linkedinAuth.loginAuthLinkedin(driver);
@@ -60,16 +60,18 @@ public class MiningService {
 
                 String urlPeople = linkedinGetUrl.getPeopleSection(driver, url);
 
-                linkUsers = linkedinUrlUsers.LinkedinUrl(driver, urlPeople);
+                linkUsers = linkedinUsersService.LinkedinUrl(driver, urlPeople);
 
-                linkedinUrlUsers.linkedinExtractUserData(driver, linkUsers);
+                linkedinUsersService.linkedinExtractUserData(driver, linkUsers);
 
 
             case MAPSGOOGLE:
 
+                driver.manage().window().maximize();
+
                 MapsUrlCompanies mapsUrlCompanies = new MapsUrlCompanies();
 
-                GetCompanies getCompanies = new GetCompanies();
+                GoogleMapsCompaniesService getCompanies = new GetCompanies();
 
                 mapsUrlCompanies.getCompaniesUrl(driver, url);
 
