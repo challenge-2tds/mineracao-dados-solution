@@ -1,15 +1,31 @@
 package mineracao.dados.solution.googleMapsService;
 
 import mineracao.dados.solution.googleMapsService.googleMapsInterface.GoogleMapsCompaniesService;
+import mineracao.dados.solution.models.GenericEntity;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GetCompanies implements GoogleMapsCompaniesService {
+
+    private String telefone;
+
+    private String estrelas;
+
+    private String endereco;
+
+    private String avaliacoes;
+
+    private String nome;
+
+    private String pluscode;
+
+    private String urlCompany;
 
 
     public List<WebElement> scrollPageAndExtractCompany(WebDriver driver) {
@@ -37,13 +53,16 @@ public class GetCompanies implements GoogleMapsCompaniesService {
     }
 
 
-    public void getAllCompaniesByKey(WebDriver driver) {
+    public List<GenericEntity> getAllCompaniesByKey(WebDriver driver) {
+
+        List<GenericEntity> genericEntityList = new ArrayList<>();
+
 
 //        List<WebElement> cardsEmpresa = driver.findElements(By.xpath("//a[@class='hfpxzc']"));
 
         List<WebElement> scrolls = scrollPageAndExtractCompany(driver);
 
-        for (WebElement scroll : scrolls) {
+        for (WebElement scroll : scrolls) { //REVER
 
             scrolls = scrollPageAndExtractCompany(driver);
 
@@ -62,38 +81,54 @@ public class GetCompanies implements GoogleMapsCompaniesService {
                 Thread.sleep(3000);
 
 
-                String nome = driver.findElement(By.xpath("//div[@class='lMbq3e']/div/h1")).getText();
+                nome = driver.findElement(By.xpath("//div[@class='lMbq3e']/div/h1")).getText();
 
-                String avaliacoes = driver.findElement(By.xpath("//div[@class='F7nice ']/span[2]/span/span")).getText();
+                avaliacoes = driver.findElement(By.xpath("//div[@class='F7nice ']/span[2]/span/span")).getText();
 
-                String estrelas = driver.findElement(By.xpath("//span[@class='ceNzKf']")).getAttribute("aria-label");
+                estrelas = driver.findElement(By.xpath("//span[@class='ceNzKf']")).getAttribute("aria-label");
 
-                String endereco = driver.findElement(By.xpath("//button[@data-item-id='address']/div/div[3]/div")).getText();
+                endereco = driver.findElement(By.xpath("//button[@data-item-id='address']/div/div[3]/div")).getText();
 
-                String pluscode = driver.findElement(By.xpath("//button[@data-tooltip='Copiar Plus Code']/div/div[3]/div")).getText();
+                pluscode = driver.findElement(By.xpath("//button[@data-tooltip='Copiar Plus Code']/div/div[3]/div")).getText();
+
+                urlCompany = driver.getCurrentUrl();
 
                 try {
-                    String telefone = driver.findElement(By.xpath("//button[@data-tooltip='Copiar número de telefone']/div/div[3]/div")).getText();
+                    telefone = driver.findElement(By.xpath("//button[@data-tooltip='Copiar número de telefone']/div/div[3]/div")).getText();
 
-                    System.out.println("Nome empresa: " + nome + "\nNº Avaliações: " + avaliacoes + "\nEstrelas: " + estrelas + "\nendereco: " + endereco + "\nTelefone: " + telefone + "\nPlusCode: " + pluscode);
-                    System.out.println("==============================================================================================================================================");
 
                 } catch (Exception e) {
 
-                    System.out.println("Nome empresa: " + nome + "\nNº Avaliações: " + avaliacoes + "\nEstrelas: " + estrelas + "\nendereco: " + endereco + "\nPlusCode: " + pluscode);
-                    System.out.println("==============================================================================================================================================");
 
                 }
+
+
+                System.out.println("Nome empresa: " + nome + "\nNº Avaliações: " + avaliacoes + "\nEstrelas: " + estrelas + "\nendereco: " + endereco + "\nTelefone: " + telefone + "\nPlusCode: " + pluscode + "\nLink empresa: " + urlCompany );
+                System.out.println("==============================================================================================================================================");
+
 
             } catch (Exception e) {
 
             }
-            driver.quit();
+            if (telefone != null) {
+                GenericEntity genericEntity = new GenericEntity();
+                genericEntity.setPhone(telefone);
+                genericEntity.setName(nome);
+                genericEntity.setLocalidade(endereco);
+                genericEntity.setEstrelas(estrelas);
+                genericEntity.setPlusCode(pluscode);
+                genericEntity.setLinkProfile(urlCompany);
+                genericEntity.setAvaliacoes(avaliacoes);
+                genericEntityList.add(genericEntity);
+
+            }
 
 
         }
 
-        //List<WebElement> linkEmpresas = containerCard.findElements(By.xpath("//a[@class='hfpxzc']"));
+
+        driver.quit();
+        return genericEntityList;
 
 
     }

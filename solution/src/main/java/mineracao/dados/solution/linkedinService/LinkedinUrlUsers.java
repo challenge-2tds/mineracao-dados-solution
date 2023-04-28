@@ -1,11 +1,13 @@
 package mineracao.dados.solution.linkedinService;
 
 import mineracao.dados.solution.linkedinService.linkedinInterface.LinkedinUsersService;
+import mineracao.dados.solution.models.GenericEntity;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class LinkedinUrlUsers implements LinkedinUsersService {
@@ -48,7 +50,9 @@ public class LinkedinUrlUsers implements LinkedinUsersService {
 
     }
 
-    public void linkedinExtractUserData(WebDriver driver, List<String> linkUsers ) {
+    public List<GenericEntity> linkedinExtractUserData(WebDriver driver, List<String> linkUsers) {
+
+        List<GenericEntity> genericEntityList = new ArrayList<>();
         for (String usuarioProfile : linkUsers) {
 
             try {
@@ -68,44 +72,51 @@ public class LinkedinUrlUsers implements LinkedinUsersService {
 
                 infoLink.click();
 
+                Thread.sleep(3000);
+
+                String mail = null ;
+                String telefone = null ;
+
                 try {
-
-                    String mail = driver.findElement(By.xpath("//section[@class='pv-contact-info__contact-type ci-email']/div/a")).getText();
-
-
-
-
+                     mail = driver.findElement(By.xpath("//section[@class='pv-contact-info__contact-type ci-email']/div/a")).getText();
                     System.out.println( "email: " + mail);
 
                 } catch (Exception e) {
                     System.out.println("==================================================================================================================================================");
                 }
 
-
                 try {
 
-                    String telefone = driver.findElement(By.xpath("//section[@class='pv-contact-info__contact-type ci-phone']/ul/li/span[1]")).getText();
+                     telefone = driver.findElement(By.xpath("//section[@class='pv-contact-info__contact-type ci-phone']/ul/li/span[1]")).getText();
                     System.out.printf("Telefone: " + telefone);
-
 
                 }catch (Exception e) {
                     System.out.println("==================================================================================================================================================");
-
                 }
 
 
+                if (mail != null || telefone != null ) {
+
+                    GenericEntity genericEntity = new GenericEntity();
+                    genericEntity.setName(nome);
+                    genericEntity.setLocalidade(localidade);
+                    genericEntity.setMail(mail);
+                    genericEntity.setPhone(telefone);
+                    genericEntity.setLinkProfile(usuarioProfile);
+                    genericEntityList.add(genericEntity);
+
+                    System.out.println("Dado minerado e iniciado processo de persistencia...");
 
 
-
-
+                }
 
 
             } catch (Exception e) {
 
             }
         }
+        return genericEntityList;
     }
-
 
 
 }
