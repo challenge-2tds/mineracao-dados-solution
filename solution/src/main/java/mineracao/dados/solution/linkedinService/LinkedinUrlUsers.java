@@ -102,7 +102,7 @@ public class LinkedinUrlUsers implements LinkedinUsersService {
                     genericEntity.setLocalidade(localidade);
                     genericEntity.setMail(mail);
                     genericEntity.setPhone(telefone);
-                    genericEntity.setLinkProfile(usuarioProfile);
+                    genericEntity.setLinkProfile(Long.valueOf(usuarioProfile));
                     genericEntityList.add(genericEntity);
 
                     System.out.println("Dado minerado e iniciado processo de persistencia...");

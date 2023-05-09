@@ -3,9 +3,7 @@ package mineracao.dados.solution.models;
 import jakarta.persistence.*;
 import lombok.*;
 import mineracao.dados.solution.TypeSearch.TypeSearch;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
+
 
 import java.util.List;
 
@@ -13,27 +11,26 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "UrlModel")
+//@Document(collection = "UrlModel")
+@Entity
+@Table(name = "TB_URL_MODEL")
 public class UrlModel {
 
     @Id
     @GeneratedValue
-    @Field("id")
     private Long id;
 
     @NonNull
-    @Field("url")
     private String url;
 
     @NonNull
-    @Field("keys")
     private String keys;
 
     @NonNull
-    @Field("typeSearch")
     private TypeSearch typeSearch;
 
-    @OneToMany(mappedBy = "genericEntity")
+    @OneToMany
+    @JoinColumn(name = "TB_GENERIC_ENTITY")
     private List<GenericEntity> genericEntityList;
 
 

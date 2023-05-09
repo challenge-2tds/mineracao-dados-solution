@@ -25,7 +25,7 @@ public class GetCompanies implements GoogleMapsCompaniesService {
 
     private String pluscode;
 
-    private String urlCompany;
+    private Long urlCompany;
 
 
     public List<WebElement> scrollPageAndExtractCompany(WebDriver driver) {
@@ -77,9 +77,7 @@ public class GetCompanies implements GoogleMapsCompaniesService {
 
             try {
 
-
                 Thread.sleep(3000);
-
 
                 nome = driver.findElement(By.xpath("//div[@class='lMbq3e']/div/h1")).getText();
 
@@ -91,7 +89,7 @@ public class GetCompanies implements GoogleMapsCompaniesService {
 
                 pluscode = driver.findElement(By.xpath("//button[@data-tooltip='Copiar Plus Code']/div/div[3]/div")).getText();
 
-                urlCompany = driver.getCurrentUrl();
+                urlCompany = Long.valueOf(driver.getCurrentUrl());
 
                 try {
                     telefone = driver.findElement(By.xpath("//button[@data-tooltip='Copiar número de telefone']/div/div[3]/div")).getText();

@@ -1,34 +1,40 @@
 package mineracao.dados.solution.models;
 
-import jakarta.persistence.Embedded;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import jakarta.persistence.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
 
 @Getter
 @Setter
-@Document(collection = "GenericEntity")
+//@Document(collection = "GenericEntity")
+@Entity
+@Table(name = "TB_GENERIC_ENTITY")
 public class GenericEntity {
 
     @Id
-    @Field("id")
+    @GeneratedValue
     private Long id;
-    private String linkProfile; //LINKEDIN
+
+    private Long linkProfile; //LINKEDIN
+
     private String mail; //LINKEDIN
+
     private String avaliacoes; //MAPS
+
     private String estrelas; //MAPS
+
     private String plusCode;//MAPS
+
     private String name; // LINKEDIN, MAPS
+
     private String phone; //LINKEDIN, MAPS
+
     private String localidade; //LINKEDIN, MAPS
 
 
     @Embedded
+    @ManyToOne
+    @JoinColumn(name = "TB_URL_MODEL")
     private UrlModel urlModel;
 
 

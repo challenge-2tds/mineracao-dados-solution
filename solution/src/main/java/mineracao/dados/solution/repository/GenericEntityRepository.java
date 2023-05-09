@@ -1,7 +1,7 @@
 package mineracao.dados.solution.repository;
 
 import mineracao.dados.solution.models.GenericEntity;
-import org.springframework.data.mongodb.repository.MongoRepository;
-
-public interface GenericEntityRepository  extends MongoRepository<GenericEntity, Long> {
+import org.springframework.data.jpa.repository.JpaRepository;
+//MongoRepository
+public interface GenericEntityRepository  extends JpaRepository<GenericEntity, Long> {
 }
