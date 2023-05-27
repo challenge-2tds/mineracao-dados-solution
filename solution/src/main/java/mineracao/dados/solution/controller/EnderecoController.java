@@ -1,8 +1,9 @@
-package mineracao.dados.solution.Controller;
+package mineracao.dados.solution.controller;
 
-import mineracao.dados.solution.Model.EnderecoRequestModel;
-import mineracao.dados.solution.Service.EnderecoService;
+
 import lombok.RequiredArgsConstructor;
+import mineracao.dados.solution.models.EnderecoRequestModel;
+import mineracao.dados.solution.service.EnderecoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

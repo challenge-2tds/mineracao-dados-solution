@@ -1,6 +1,6 @@
 package mineracao.dados.solution.Feign;
 
-import mineracao.dados.solution.Model.EnderecoResponseModel;
+import mineracao.dados.solution.models.EnderecoResponseModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;

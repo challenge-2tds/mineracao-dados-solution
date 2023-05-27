@@ -1,14 +1,14 @@
-package mineracao.dados.solution.Controller;
+package mineracao.dados.solution.controller;
 
-import mineracao.dados.solution.Model.LoginModel;
-import mineracao.dados.solution.Service.LoginService;
+import mineracao.dados.solution.models.LoginModel;
+import mineracao.dados.solution.service.LoginService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
+
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)

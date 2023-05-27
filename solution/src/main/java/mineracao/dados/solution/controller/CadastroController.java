@@ -1,10 +1,11 @@
-package mineracao.dados.solution.Controller;
+package mineracao.dados.solution.controller;
 
 
 import mineracao.dados.solution.Exception.CPFException;
-import mineracao.dados.solution.Model.CadastroModel;
-import mineracao.dados.solution.Repository.CadastroRepository;
-import mineracao.dados.solution.Service.CadastroService;
+
+import mineracao.dados.solution.models.CadastroModel;
+import mineracao.dados.solution.repository.CadastroRepository;
+import mineracao.dados.solution.service.CadastroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

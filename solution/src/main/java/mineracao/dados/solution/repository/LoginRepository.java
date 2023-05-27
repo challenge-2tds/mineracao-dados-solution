@@ -1,6 +1,6 @@
-package mineracao.dados.solution.Repository;
+package mineracao.dados.solution.repository;
 
-import mineracao.dados.solution.Model.LoginModel;
+import mineracao.dados.solution.models.LoginModel;
 import org.springframework.boot.context.properties.DeprecatedConfigurationProperty;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

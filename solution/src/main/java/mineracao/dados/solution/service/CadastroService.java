@@ -1,9 +1,9 @@
-package mineracao.dados.solution.Service;
+package mineracao.dados.solution.service;
 
 
-import mineracao.dados.solution.Repository.CadastroRepository;
 import jakarta.transaction.Transactional;
-import mineracao.dados.solution.Model.CadastroModel;
+import mineracao.dados.solution.models.CadastroModel;
+import mineracao.dados.solution.repository.CadastroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

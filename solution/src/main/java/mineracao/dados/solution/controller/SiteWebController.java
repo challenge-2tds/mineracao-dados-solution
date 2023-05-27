@@ -6,7 +6,6 @@ import mineracao.dados.solution.repository.UrlModelRepository;
 import mineracao.dados.solution.service.GenericEntityServiceImpl;
 import mineracao.dados.solution.service.MiningService;
 import mineracao.dados.solution.service.UrlServiceImpl;
-import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

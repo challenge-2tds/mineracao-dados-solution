@@ -1,9 +1,9 @@
-package mineracao.dados.solution.Service;
+package mineracao.dados.solution.service;
 
 import mineracao.dados.solution.Feign.EnderecoFeign;
-import mineracao.dados.solution.Model.EnderecoRequestModel;
-import mineracao.dados.solution.Model.EnderecoResponseModel;
 import lombok.RequiredArgsConstructor;
+import mineracao.dados.solution.models.EnderecoRequestModel;
+import mineracao.dados.solution.models.EnderecoResponseModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package mineracao.dados.solution.Model;
+package mineracao.dados.solution.models;
 
 import jakarta.persistence.Table;
 import lombok.Getter;
